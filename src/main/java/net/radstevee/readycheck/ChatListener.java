@@ -9,9 +9,9 @@ public class ChatListener implements Listener {
     private final ReadyCheckState state;
 
     public ChatListener() {
-        final ReadyCheck pluginInstance = ReadyCheck.instance();
+        final ReadyCheckPlugin pluginInstance = ReadyCheckPlugin.instance();
         Bukkit.getPluginManager().registerEvents(this, pluginInstance);
-        state = ReadyCheck.state();
+        state = ReadyCheckPlugin.state();
     }
 
     @EventHandler

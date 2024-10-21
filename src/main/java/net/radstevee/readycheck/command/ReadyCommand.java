@@ -2,7 +2,7 @@ package net.radstevee.readycheck.command;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.radstevee.readycheck.ReadyCheck;
+import net.radstevee.readycheck.ReadyCheckPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -14,7 +14,7 @@ public class ReadyCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
-            if (!ReadyCheck.state().isReadyCheckOngoing()) {
+            if (!ReadyCheckPlugin.state().isReadyCheckOngoing()) {
                 sender.spigot().sendMessage(
                         new ComponentBuilder()
                                 .append("There is no ready check ongoing!")
@@ -25,7 +25,7 @@ public class ReadyCommand implements TabExecutor {
                 return true;
             }
 
-            ReadyCheck.instance().playerReady(player);
+            ReadyCheckPlugin.instance().playerReady(player);
             return true;
         }
 

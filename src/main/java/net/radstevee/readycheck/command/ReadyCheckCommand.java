@@ -3,7 +3,7 @@ package net.radstevee.readycheck.command;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.radstevee.readycheck.Permissions;
-import net.radstevee.readycheck.ReadyCheck;
+import net.radstevee.readycheck.ReadyCheckPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -21,7 +21,7 @@ public class ReadyCheckCommand implements TabExecutor {
 
         if (args.length > 0) {
             if (Objects.equals(args[0], "end")) {
-                ReadyCheck.instance().endReadyCheck(false);
+                ReadyCheckPlugin.instance().endReadyCheck(false);
                 sender.spigot().sendMessage(
                         new ComponentBuilder()
                                 .append("Ended the ready check")
@@ -29,7 +29,7 @@ public class ReadyCheckCommand implements TabExecutor {
                 );
             }
         } else {
-            if (ReadyCheck.state().participatingPlayers().isEmpty()) {
+            if (ReadyCheckPlugin.state().participatingPlayers().isEmpty()) {
                 sender.spigot().sendMessage(
                         new ComponentBuilder()
                                 .append("No players found")
@@ -40,7 +40,7 @@ public class ReadyCheckCommand implements TabExecutor {
                 return true;
             }
 
-            ReadyCheck.instance().executeReadyCheck();
+            ReadyCheckPlugin.instance().executeReadyCheck();
         }
 
         return true;
